@@ -1,0 +1,114 @@
+{
+  "Name": "repay",
+  "CreationDate": "2025-4-17",
+  "Commands": [
+    {
+      "Command": "open",
+      "Target": "https://platform.nexo.com/",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div/div[4]/div/div[3]/div/div/div[2]/span",
+      "Value": "",
+      "Targets": [
+        "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div/div[4]/div/div[3]/div/div/div[2]/span",
+        "xpath=//div[3]/div/div/div[2]/span",
+        "css=#top-scrollable-container > main > div > div.sc-20d85afa-0.bzwjTr > div > div.sc-5e147d8a-0.jwKNrN > div > div:nth-child(3) > div > div > div.sc-20d85afa-0.fyzWuC > span.sc-cc3f2ffc-0.iOgxGb"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"1735049370511-453158\"]/div/div/div/div[2]",
+      "Value": "",
+      "Targets": [
+        "xpath=//*[@id=\"1735049370511-453158\"]/div/div/div/div[2]",
+        "xpath=//form/div[3]/div[2]/div/div/div/div/div/div[2]",
+        "css=#1735049370511-453158 > div > div > div.css-1gfk9cu > div.css-1tiauk3"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "type",
+      "Target": "",
+      "Value": "usdt",
+      "Targets": [
+        "id=react-select-2-input",
+        "xpath=//*[@id=\"react-select-2-input\"]",
+        "css=#react-select-2-input"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"react-select-2-option-0-6\"]/div/div/div[2]/div/span",
+      "Value": "",
+      "Targets": [
+        "xpath=//*[@id=\"react-select-2-option-0-6\"]/div/div/div[2]/div/span",
+        "xpath=//div[5]/div/div/div/div[2]/div/div/div/div[2]/div/span",
+        "css=#react-select-2-option-0-6 > div > div.sc-20d85afa-0.fHMUcv > div.sc-20d85afa-0.fHMUcv > div > span"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "id=1735049049651-237759",
+      "Value": "",
+      "Targets": [
+        "id=1735049049651-237759",
+        "xpath=//*[@id=\"1735049049651-237759\"]",
+        "xpath=//input[@id='1735049049651-237759']",
+        "xpath=//div[2]/div/input",
+        "css=#1735049049651-237759"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "type",
+      "Target": "xpath=//*[@id=\"repay.repay-screen.repayment-amount-input-wrapper\"]/div[2]/div/input",
+      "Value": "${TOTAL_TARGET_AMMOUNT}",
+      "Targets": [
+        "xpath=//*[@id=\"repay.repay-screen.repayment-amount-input-wrapper\"]/div[2]/div/input",
+        "xpath=//input[@value='33']",
+        "xpath=//div[2]/div/input",
+        "css=#repay.repay-screen.repayment-amount-input-wrapper > div.sc-8b007a3e-0.bQUarV > div > input"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=/html/body/div[4]/div[2]/div/div[3]/div/form/div[6]/div[2]/div[2]/div/div/button/div/span",
+      "Value": "",
+      "Targets": [
+        "xpath=/html/body/div[4]/div[2]/div/div[3]/div/form/div[6]/div[2]/div[2]/div/div/button/div/span",
+        "xpath=//div[2]/div[2]/div/div/button/div/span",
+        "css=body > div.sc-e2017d7d-3.cSgphb > div.sc-591ab99f-0.beDxr.animate-in > div > div.sc-20d85afa-0.cdACXk.sc-e2017d7d-2.dkBTBR > div > form > div.sc-20d85afa-0.kcdpIn > div.sc-20d85afa-0.eFuWCl > div.sc-d887cb40-0.hMnfKg > div > div:nth-child(1) > button > div > span"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=/html/body/div[5]/div[2]/div/div[4]/div/div/div/div/button/div/span",
+      "Value": "",
+      "Targets": [
+        "xpath=/html/body/div[5]/div[2]/div/div[4]/div/div/div/div/button/div/span",
+        "xpath=//div/div[4]/div/div/div/div/button/div/span",
+        "css=body > div.sc-e2017d7d-3.cSgphb > div.sc-591ab99f-0.beDxr.animate-in > div > div.sc-5e147d8a-0.cDpYxO > div > div > div > div:nth-child(1) > button > div > span"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=/html/body/div[4]/div[2]/div/div[2]/div/div/button/div/span",
+      "Value": "",
+      "Targets": [
+        "xpath=/html/body/div[4]/div[2]/div/div[2]/div/div/button/div/span",
+        "xpath=//div[2]/div/div[2]/div/div/button/div/span",
+        "css=body > div.sc-e2017d7d-3.cSgphb > div.sc-591ab99f-0.beDxr.animate-in > div > div.sc-20d85afa-0.cdACXk.sc-e2017d7d-2.dkBTBR > div > div > button > div > span"
+      ],
+      "Description": ""
+    }
+  ]
+}

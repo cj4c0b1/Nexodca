@@ -1,10 +1,34 @@
 {
   "Name": "generic-sell",
-  "CreationDate": "2024-12-12",
+  "CreationDate": "2025-4-17",
   "Commands": [
     {
       "Command": "open",
       "Target": "https://platform.nexo.com/exchange/swap/deposit/${global_token}_${global_token_from}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "pause",
+      "Target": "300",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/section/div/div/div[3]/div/div/span[2]",
+      "Value": "Available_text",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return parseFloat(${Available_text});",
+      "Value": "Available",
+      "Description": ""
+    },
+    {
+      "Command": "if",
+      "Target": "${Available} > 0",
       "Value": "",
       "Description": ""
     },
@@ -78,6 +102,36 @@
       "Description": ""
     },
     {
+      "Command": "storeEval",
+      "Target": "document.querySelector('#top-scrollable-container > main > div > div > div.sc-c1ea309-0.hSoDSu > div > div > section > div > div:nth-child(1) > div.sc-5e147d8a-0.ilEIAX > div > svg') !== null",
+      "Value": "elementPresent",
+      "Description": "Check if warning element exists and store result"
+    },
+    {
+      "Command": "comment",
+      "Target": "verifyElementPresent // css=#top-scrollable-container > main > div > div > div.sc-c1ea309-0.hSoDSu > div > div > section > div > div:nth-child(1) > div.sc-5e147d8a-0.ilEIAX > div > svg",
+      "Value": "",
+      "Description": "Ched if there is a warning and skip"
+    },
+    {
+      "Command": "comment",
+      "Target": "if // ${!statusOK} == false",
+      "Value": "",
+      "Description": "Ched if there is a warning and skip"
+    },
+    {
+      "Command": "comment",
+      "Target": "if // !${!statusOK}",
+      "Value": "",
+      "Description": "Ched if there is a warning and skip"
+    },
+    {
+      "Command": "if",
+      "Target": "${elementPresent} == false",
+      "Value": "",
+      "Description": "Proceed only if element is not present"
+    },
+    {
       "Command": "click",
       "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/div[3]/button/div/span",
       "Value": "",
@@ -108,6 +162,36 @@
     {
       "Command": "pause",
       "Target": "3000",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div/div/div/div[2]/div/div/span",
+      "Value": "target_ammount_text",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return parseFloat(${target_ammount_text});",
+      "Value": "target_ammount",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return Number(${total_target_ammount}) + Number(${TARGET_AMMOUNT});",
+      "Value": "total_target_ammount",
+      "Description": "Add target_ammount to total_target_amount"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
       "Value": "",
       "Description": ""
     }

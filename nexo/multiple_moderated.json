@@ -1,6 +1,6 @@
 {
   "Name": "multiple_moderated",
-  "CreationDate": "2024-12-12",
+  "CreationDate": "2025-4-17",
   "Commands": [
     {
       "Command": "comment",
@@ -175,6 +175,24 @@
       "Target": "bnb",
       "Value": "global_token",
       "Description": "Define the global token as 'eur'"
+    },
+    {
+      "Command": "store",
+      "Target": "0.05",
+      "Value": "portfolio_percentage",
+      "Description": "Set portfolio_percentage"
+    },
+    {
+      "Command": "run",
+      "Target": "generic_with_price_check",
+      "Value": "",
+      "Description": "Call the target script 'generic' with the parameter 'eur'"
+    },
+    {
+      "Command": "store",
+      "Target": "ondo",
+      "Value": "global_token",
+      "Description": "Define the global token"
     },
     {
       "Command": "store",

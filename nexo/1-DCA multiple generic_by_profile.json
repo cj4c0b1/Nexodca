@@ -1,10 +1,82 @@
 {
-  "Name": "COMBO-check_Loyalty_level-and run multiple generic-1",
+  "Name": "1-DCA multiple generic_by_profile",
   "CreationDate": "2025-4-17",
   "Commands": [
     {
       "Command": "store",
-      "Target": "33.00000000",
+      "Target": "true",
+      "Value": "force",
+      "Description": "Set the global token to convert from"
+    },
+    {
+      "Command": "comment",
+      "Target": "store // ,",
+      "Value": "globalPurchasedCoins",
+      "Description": "Set the global token to convert from"
+    },
+    {
+      "Command": "store",
+      "Target": "[]",
+      "Value": "coinList",
+      "Description": "Set the global token to convert from"
+    },
+    {
+      "Command": "store",
+      "Target": "[]",
+      "Value": "purchasedCoins",
+      "Description": "Set the global token to convert from"
+    },
+    {
+      "Command": "store",
+      "Target": "[]",
+      "Value": "NOT_purchasedCoins",
+      "Description": "Set the global token to convert from"
+    },
+    {
+      "Command": "prompt",
+      "Target": "Do you want to enable 'force'? (yes/no) [default: no]:",
+      "Value": "force_input",
+      "Description": "Prompt user to enable or disable force"
+    },
+    {
+      "Command": "if_v2",
+      "Target": "${force_input} == 'yes'",
+      "Value": "",
+      "Description": "Check if user entered yes for force"
+    },
+    {
+      "Command": "store",
+      "Target": "true",
+      "Value": "force",
+      "Description": "Enable force if user input is yes"
+    },
+    {
+      "Command": "else",
+      "Target": "",
+      "Value": "",
+      "Description": "If user did not input yes"
+    },
+    {
+      "Command": "store",
+      "Target": "false",
+      "Value": "force",
+      "Description": "Disable force if user input is no or default"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "End of force prompt logic"
+    },
+    {
+      "Command": "echo",
+      "Target": "'force' is set to: ${force}",
+      "Value": "",
+      "Description": "Inform the user of the force setting"
+    },
+    {
+      "Command": "store",
+      "Target": "250",
       "Value": "default_ammount",
       "Description": "Set the global token to convert from"
     },
@@ -16,7 +88,7 @@
     },
     {
       "Command": "prompt",
-      "Target": "Please enter the amount to convert (default: 33.00000000):",
+      "Target": "Please enter the amount to convert (default: 250.00000000):",
       "Value": "global_ammount",
       "Description": "Prompt user to enter the global amount"
     },
@@ -57,14 +129,14 @@
       "Description": "Set portfolio_percentage to 1 if not defined"
     },
     {
-      "Command": "comment",
-      "Target": "prompt // Please select a profile: 1 - Conservative, 2 - Moderated, 3 - Aggressive [default: 1]",
+      "Command": "prompt",
+      "Target": "Please select a profile: 1 - Conservative, 2 - Moderated, 3 - Aggressive [default: 1]",
       "Value": "profile_input",
       "Description": "Prompt user to select a profile"
     },
     {
-      "Command": "comment",
-      "Target": "if_v2 // ${profile_input} == null || ${profile_input} == ''",
+      "Command": "if",
+      "Target": "${profile_input} == null || ${profile_input} == ''",
       "Value": "",
       "Description": "If input is empty, default to 1"
     },
@@ -75,8 +147,8 @@
       "Description": "Set profile to default Conservative"
     },
     {
-      "Command": "comment",
-      "Target": "end // ",
+      "Command": "end",
+      "Target": "",
       "Value": "",
       "Description": "End of default check"
     },
@@ -177,46 +249,16 @@
       "Description": "Inform that the coin validation was successful"
     },
     {
-      "Command": "open",
-      "Target": "https://platform.nexo.com/profile/loyalty-levels",
+      "Command": "run",
+      "Target": "check_Loyalty_level",
       "Value": "",
-      "Description": "Open the loyalty levels page"
-    },
-    {
-      "Command": "waitForPageToLoad",
-      "Target": "6000",
-      "Value": "",
-      "Description": "Wait for the page to load completely"
-    },
-    {
-      "Command": "storeText",
-      "Target": "//*[@id=\"top-scrollable-container\"]/main/div/div/div/div/div[2]/div[1]/div/div/div/span",
-      "Value": "loyalty_level_text",
-      "Description": "Store the loyalty level text"
-    },
-    {
-      "Command": "echo",
-      "Target": "${loyalty_level_text}",
-      "Value": "",
-      "Description": "Print the loyalty level text"
-    },
-    {
-      "Command": "executeScript_Sandbox",
-      "Target": "return parseFloat(${loyalty_level_text});",
-      "Value": "nexo_percentage",
-      "Description": "Extract the percentage value"
-    },
-    {
-      "Command": "echo",
-      "Target": "${nexo_percentage}",
-      "Value": "",
-      "Description": "Print the percentage value"
+      "Description": ""
     },
     {
       "Command": "if_v2",
-      "Target": "${nexo_percentage} !== null && ${nexo_percentage} > 10",
+      "Target": "${loyalty} == \"platinum\"",
       "Value": "",
-      "Description": "Check if the percentage value is greater than 10%"
+      "Description": "Check if the loyalty is platinum - Nexo above 10%"
     },
     {
       "Command": "echo",
@@ -231,26 +273,26 @@
       "Description": "Print a message if the condition is true"
     },
     {
+      "Command": "run",
+      "Target": "multiple_${profile}",
+      "Value": "",
+      "Description": "Print a message if the condition is true"
+    },
+    {
       "Command": "comment",
-      "Target": "run // multiple_${profile}",
+      "Target": "run // multiple_conservative",
       "Value": "",
       "Description": "Print a message if the condition is true"
     },
     {
-      "Command": "run",
-      "Target": "multiple_conservative",
+      "Command": "comment",
+      "Target": "run // multiple_moderated",
       "Value": "",
       "Description": "Print a message if the condition is true"
     },
     {
-      "Command": "run",
-      "Target": "multiple_moderated",
-      "Value": "",
-      "Description": "Print a message if the condition is true"
-    },
-    {
-      "Command": "run",
-      "Target": "multiple_aggressive",
+      "Command": "comment",
+      "Target": "run // multiple_aggressive",
       "Value": "",
       "Description": "Print a message if the condition is true"
     },

@@ -1,6 +1,6 @@
 {
   "Name": "generic-BUY-with-min-limit",
-  "CreationDate": "2025-02-11",
+  "CreationDate": "2025-4-17",
   "Commands": [
     {
       "Command": "open",
@@ -34,7 +34,7 @@
     },
     {
       "Command": "if",
-      "Target": "${!purchased}",
+      "Target": "${isNOTPurchased}",
       "Value": "",
       "Description": "Only proceed if not yet purchased"
     },

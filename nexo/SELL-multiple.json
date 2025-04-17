@@ -1,10 +1,10 @@
 {
   "Name": "SELL-multiple",
-  "CreationDate": "2024-12-12",
+  "CreationDate": "2025-4-17",
   "Commands": [
     {
-      "Command": "store",
-      "Target": "25",
+      "Command": "comment",
+      "Target": "store // 25",
       "Value": "portfolio_percentage",
       "Description": "Set portfolio_percentage to 25"
     },

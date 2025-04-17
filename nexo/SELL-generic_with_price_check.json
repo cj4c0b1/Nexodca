@@ -1,6 +1,6 @@
 {
   "Name": "SELL-generic_with_price_check",
-  "CreationDate": "2024-12-12",
+  "CreationDate": "2025-4-17",
   "Commands": [
     {
       "Command": "store",
@@ -39,28 +39,64 @@
       "Description": "Remove the target div with specific data-testid and class"
     },
     {
-      "Command": "storeEval",
-      "Target": "!!document.querySelector('.sc-5601f559-0.dGASmP')",
+      "Command": "comment",
+      "Target": "storeEval // !!document.querySelector('.sc-5601f559-0.dGASmP')",
       "Value": "arrowdown",
       "Description": ""
     },
     {
       "Command": "storeEval",
-      "Target": "!!document.querySelector('.sc-5601f559-0.bqQvhW')",
+      "Target": "!!document.querySelector('.sc-91bae1ec-0.gOJGlv')",
+      "Value": "arrowdown",
+      "Description": "new class"
+    },
+    {
+      "Command": "comment",
+      "Target": "storeEval // !!document.querySelector('.sc-5601f559-0.bqQvhW')",
       "Value": "arrowdup",
       "Description": ""
     },
     {
-      "Command": "comment",
-      "Target": "storeText // xpath=//span[@data-testid='web-ui.amount.currency-value' and contains(@class, 'cqZKyX')]",
+      "Command": "storeEval",
+      "Target": "!!document.querySelector('.sc-91bae1ec-0.iSCnOF')",
+      "Value": "arrowdup",
+      "Description": "new class"
+    },
+    {
+      "Command": "if",
+      "Target": "!${arrowdup}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "storeEval",
+      "Target": "!!document.querySelector('.sc-91bae1ec-0.lovZFX')",
+      "Value": "arrowdup",
+      "Description": "new class"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"AreaChart\"]/div/div/div/span/div/div[2]/div/span[2]",
       "Value": "asset_price",
       "Description": "Store asset price"
     },
     {
-      "Command": "comment",
-      "Target": "storeText // xpath=//span[@data-testid='web-ui.amount.currency-value' and contains(@class, 'gTYhNR')]",
-      "Value": "price_variation",
+      "Command": "storeText",
+      "Target": "xpath=//*[@id=\"AreaChart\"]/div/div/div/span/div/div/span",
+      "Value": "price_variation_text",
       "Description": "Store percentage variation"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return parseFloat(${price_variation_text});",
+      "Value": "price_variation",
+      "Description": "Store percentage variation in float"
     },
     {
       "Command": "if",
@@ -99,8 +135,20 @@
       "Description": ""
     },
     {
-      "Command": "comment",
-      "Target": "run // generic-SELL-1",
+      "Command": "if_v2",
+      "Target": "${PRICE_VARIATION} > ${MIN_POSITIVE_VARIATION}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "run",
+      "Target": "generic-SELL",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
       "Value": "",
       "Description": ""
     },

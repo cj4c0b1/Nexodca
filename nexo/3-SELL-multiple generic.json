@@ -1,0 +1,162 @@
+{
+  "Name": "3-SELL-multiple generic",
+  "CreationDate": "2025-4-17",
+  "Commands": [
+    {
+      "Command": "store",
+      "Target": "false",
+      "Value": "force",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "0",
+      "Value": "total_target_ammount",
+      "Description": ""
+    },
+    {
+      "Command": "prompt",
+      "Target": "Please type a coin (USDT, USDC, EURx) [default: USDT]:",
+      "Value": "user_token",
+      "Description": "Prompt user to type a coin"
+    },
+    {
+      "Command": "if_v2",
+      "Target": "${user_token} == null || ${user_token} == ''",
+      "Value": "",
+      "Description": "Check if user_token is empty"
+    },
+    {
+      "Command": "store",
+      "Target": "USDT",
+      "Value": "user_token",
+      "Description": "Set default coin to USDT if none was selected"
+    },
+    {
+      "Command": "echo",
+      "Target": "No coin selected. Using default value: USDT.",
+      "Value": "",
+      "Description": "Inform the user that USDT is the default"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "End of the empty check"
+    },
+    {
+      "Command": "store",
+      "Target": "${user_token}",
+      "Value": "global_token_from",
+      "Description": "Store the user token globally"
+    },
+    {
+      "Command": "prompt",
+      "Target": "Please type the minimum positive variation in percentage [default: 9%]:",
+      "Value": "min_positive_variation",
+      "Description": "Prompt user to type the minimum positive variation"
+    },
+    {
+      "Command": "if_v2",
+      "Target": "${min_positive_variation} == null || ${min_positive_variation} == ''",
+      "Value": "",
+      "Description": "Check if min_positive_variation is empty"
+    },
+    {
+      "Command": "store",
+      "Target": "9",
+      "Value": "min_positive_variation",
+      "Description": "Set default positive variation to 9% if none was entered"
+    },
+    {
+      "Command": "echo",
+      "Target": "No variation entered. Using default value: 9%.",
+      "Value": "",
+      "Description": "Inform the user that 9% is the default variation"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "End of the empty check for variation"
+    },
+    {
+      "Command": "store",
+      "Target": "${min_positive_variation}",
+      "Value": "global_min_variation",
+      "Description": "Store the minimum positive variation globally"
+    },
+    {
+      "Command": "prompt",
+      "Target": "Please type the portfolio percentage (25, 50, 100) [default: 25]:",
+      "Value": "portfolio_percentage",
+      "Description": "Prompt user to type the portfolio percentage"
+    },
+    {
+      "Command": "if_v2",
+      "Target": "${portfolio_percentage} == null || ${portfolio_percentage} == '' || (${portfolio_percentage} != '25' && ${portfolio_percentage} != '50' && ${portfolio_percentage} != '100')",
+      "Value": "",
+      "Description": "Check if portfolio_percentage is empty or invalid"
+    },
+    {
+      "Command": "store",
+      "Target": "25",
+      "Value": "portfolio_percentage",
+      "Description": "Set default portfolio percentage to 100 if none was entered or invalid"
+    },
+    {
+      "Command": "echo",
+      "Target": "Invalid or no portfolio percentage entered. Using default value: 100.",
+      "Value": "",
+      "Description": "Inform the user that 100% is the default portfolio percentage"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "End of the empty or invalid check for portfolio percentage"
+    },
+    {
+      "Command": "store",
+      "Target": "${portfolio_percentage}",
+      "Value": "global_portfolio_percentage",
+      "Description": "Store the portfolio percentage globally"
+    },
+    {
+      "Command": "run",
+      "Target": "generic-SELL-1",
+      "Value": "",
+      "Description": "Run the SELL-multiple command"
+    },
+    {
+      "Command": "run",
+      "Target": "repay",
+      "Value": "",
+      "Description": "Run the SELL-multiple command"
+    },
+    {
+      "Command": "comment",
+      "Target": "run // multiple_${profile}",
+      "Value": "",
+      "Description": "Run based on profile"
+    },
+    {
+      "Command": "comment",
+      "Target": "run // multiple_conservative",
+      "Value": "",
+      "Description": "Run conservative profile"
+    },
+    {
+      "Command": "comment",
+      "Target": "run // multiple_moderated",
+      "Value": "",
+      "Description": "Run moderated profile"
+    },
+    {
+      "Command": "comment",
+      "Target": "run // multiple_aggressive",
+      "Value": "",
+      "Description": "Run aggressive profile"
+    }
+  ]
+}

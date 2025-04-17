@@ -1,28 +1,10 @@
 {
   "Name": "generic-SELL-1",
-  "CreationDate": "2024-12-12",
+  "CreationDate": "2025-4-17",
   "Commands": [
     {
-      "Command": "open",
-      "Target": "https://platform.nexo.com/exchange/swap",
-      "Value": "",
-      "Description": "Open Nexo Swap"
-    },
-    {
       "Command": "executeScript_Sandbox",
-      "Target": "return ['BTC', 'ETH','AAVE', 'ADA', 'APE', 'ATOM', 'AVAX', 'SOL', 'BCH', 'LTC', 'DOT', 'XRP', 'TIA', 'LINK', 'NEAR', 'CAKE', 'GALA', 'AXS', 'SNX', 'GRT', 'CRV', 'SAND'];",
-      "Value": "crypto_assets",
-      "Description": ""
-    },
-    {
-      "Command": "comment",
-      "Target": "executeScript_Sandbox // return [ 'ETH','AAVE', 'ADA', 'APE', 'ATOM', 'AVAX', 'SOL', 'BCH', 'LTC', 'DOT', 'XRP', 'TIA', 'LINK', 'NEAR', 'CAKE', 'GALA', 'AXS', 'SNX', 'GRT', 'CRV', 'SAND'];",
-      "Value": "crypto_assets",
-      "Description": ""
-    },
-    {
-      "Command": "comment",
-      "Target": "executeScript_Sandbox // return [ 'AAVE','AAVE', 'ADA', 'APE', 'ATOM', 'AVAX', 'SOL', 'BCH', 'LTC', 'DOT', 'XRP', 'TIA', 'LINK', 'NEAR', 'CAKE', 'GALA', 'AXS', 'SNX', 'GRT', 'CRV', 'SAND'];",
+      "Target": "return [ 'APT', 'TON', 'RUNE', 'CRV', 'TRX', 'ONDO', 'BTC', 'ETH', 'ADA', 'APE', 'ATOM', 'AVAX', 'SOL', 'BCH', 'LTC', 'DOT', 'XRP', 'TIA', 'LINK', 'NEAR', 'CAKE', 'GALA', 'AXS', 'SNX', 'GRT', 'SAND'];",
       "Value": "crypto_assets",
       "Description": ""
     },
@@ -45,132 +27,140 @@
       "Description": ""
     },
     {
-      "Command": "if",
-      "Target": "${arrowdup}",
+      "Command": "end",
+      "Target": "",
       "Value": "",
       "Description": ""
     },
     {
-      "Command": "open",
-      "Target": "https://platform.nexo.com/exchange/swap/deposit/${currentAsset}_${global_token_from}",
+      "Command": "comment",
+      "Target": "if // ${arrowdup}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "if // ${PRICE_VARIATION} > ${MIN_POSITIVE_VARIATION}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "open // https://platform.nexo.com/exchange/swap/deposit/${currentAsset}_${global_token_from}",
       "Value": "",
       "Description": "Navigate to the swap page for each asset"
     },
     {
-      "Command": "storeText",
-      "Target": "css=span[data-testid='web-ui.amount.currency-value']",
+      "Command": "comment",
+      "Target": "storeText // css=span[data-testid='web-ui.amount.currency-value']",
       "Value": "availableValue",
       "Description": "Stores the available currency value from the span element"
     },
     {
-      "Command": "pause",
-      "Target": "1000",
+      "Command": "comment",
+      "Target": "pause // 1000",
       "Value": "",
       "Description": ""
     },
     {
-      "Command": "executeScript_Sandbox",
-      "Target": "return parseFloat(${availableValue});",
+      "Command": "comment",
+      "Target": "executeScript_Sandbox // return parseFloat(${availableValue});",
       "Value": "numericValue",
       "Description": "Converts the available value to a numeric type"
     },
     {
-      "Command": "if",
-      "Target": "${numericValue} > 0",
+      "Command": "comment",
+      "Target": "if // ${numericValue} > 0",
       "Value": "",
       "Description": "Checks if the available value is greater than zero"
     },
     {
-      "Command": "if",
-      "Target": "${portfolio_percentage} == 25",
+      "Command": "comment",
+      "Target": "if // ${portfolio_percentage} == 25",
       "Value": "",
       "Description": "Check if portfolio percentage is 25"
     },
     {
-      "Command": "click",
-      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/section/div/div/div[3]/div[2]/div/button/div/span",
+      "Command": "comment",
+      "Target": "click // xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/section/div/div/div[3]/div[2]/div/button/div/span",
       "Value": "",
       "Description": "Sell 25% of the current asset"
     },
     {
-      "Command": "elseif",
-      "Target": "${portfolio_percentage} == 50",
+      "Command": "comment",
+      "Target": "elseif // ${portfolio_percentage} == 50",
       "Value": "",
       "Description": "Check if portfolio percentage is 50"
     },
     {
-      "Command": "click",
-      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/section/div/div/div[3]/div[2]/div[2]/button/div/span",
+      "Command": "comment",
+      "Target": "click // xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/section/div/div/div[3]/div[2]/div[2]/button/div/span",
       "Value": "",
       "Description": "Sell 50% of the current asset"
     },
     {
-      "Command": "elseif",
-      "Target": "${portfolio_percentage} == 100",
+      "Command": "comment",
+      "Target": "elseif // ${portfolio_percentage} == 100",
       "Value": "",
       "Description": "Check if portfolio percentage is 100"
     },
     {
-      "Command": "click",
-      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/section/div/div/div[3]/div[2]/div[3]/button/div/span",
+      "Command": "comment",
+      "Target": "click // xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/section/div/div/div[3]/div[2]/div[3]/button/div/span",
       "Value": "",
       "Description": "Sell 100% of the current asset"
     },
     {
-      "Command": "end",
-      "Target": "",
+      "Command": "comment",
+      "Target": "end // ",
       "Value": "",
       "Description": "End conditional check for portfolio percentage"
     },
     {
-      "Command": "click",
-      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/div[3]/button",
+      "Command": "comment",
+      "Target": "click // xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/div[3]/button",
       "Value": "",
-      "Targets": [
-        "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/div[3]/button",
-        "xpath=//div[2]/div/div/div[3]/button",
-        "css=#top-scrollable-container > main > div > div > div.sc-c1ea309-0.hELMsS > div > div > div.sc-20d85afa-0.jJpIYA > button.sc-5e62eced-0.htmizp.variant-primary.size-large"
-      ],
       "Description": "Confirm sell action"
     },
     {
-      "Command": "pause",
-      "Target": "300",
+      "Command": "comment",
+      "Target": "pause // 300",
       "Value": "",
       "Description": "Pause briefly to allow transaction to complete"
     },
     {
-      "Command": "click",
-      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div/div/div/div/div[6]/button[2]",
-      "Value": "",
-      "Targets": [
-        "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div/div/div/div/div[6]/button[2]",
-        "xpath=//button[2]",
-        "css=#top-scrollable-container > main > div > div > div > div > div > div > div.sc-20d85afa-0.jguEiB > button.sc-eee95bba-0.eccKlP.variant-primary.size-large"
-      ],
-      "Description": ""
-    },
-    {
-      "Command": "pause",
-      "Target": "3000",
+      "Command": "comment",
+      "Target": "click // xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div/div/div/div/div[6]/button[2]",
       "Value": "",
       "Description": ""
     },
     {
-      "Command": "end",
-      "Target": "",
+      "Command": "comment",
+      "Target": "pause // 3000",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "end // ",
       "Value": "",
       "Description": "End loop through crypto assets"
     },
     {
-      "Command": "end",
-      "Target": "",
+      "Command": "comment",
+      "Target": "end // ",
       "Value": "",
       "Description": ""
     },
     {
-      "Command": "end",
-      "Target": "",
+      "Command": "comment",
+      "Target": "end // ",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "end // ",
       "Value": "",
       "Description": ""
     }

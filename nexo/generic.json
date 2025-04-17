@@ -1,6 +1,6 @@
 {
   "Name": "generic",
-  "CreationDate": "2024-12-12",
+  "CreationDate": "2025-4-17",
   "Commands": [
     {
       "Command": "comment",
@@ -201,6 +201,18 @@
     {
       "Command": "pause",
       "Target": "3000",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "else",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "pause",
+      "Target": "",
       "Value": "",
       "Description": ""
     },

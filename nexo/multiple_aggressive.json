@@ -1,6 +1,6 @@
 {
   "Name": "multiple_aggressive",
-  "CreationDate": "2024-12-12",
+  "CreationDate": "2025-4-17",
   "Commands": [
     {
       "Command": "comment",
@@ -243,8 +243,8 @@
       "Description": "Call the target script 'generic' with the parameter 'eur'"
     },
     {
-      "Command": "store",
-      "Target": "hnt",
+      "Command": "comment",
+      "Target": "store // hnt",
       "Value": "global_token",
       "Description": "Not available at nexo"
     },

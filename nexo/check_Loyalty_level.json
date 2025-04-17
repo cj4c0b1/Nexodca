@@ -1,0 +1,90 @@
+{
+  "Name": "check_Loyalty_level",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "label",
+      "Target": "Start",
+      "Value": "",
+      "Description": "Start label"
+    },
+    {
+      "Command": "open",
+      "Target": "https://platform.nexo.com/profile/loyalty-levels",
+      "Value": "",
+      "Description": "Open the loyalty levels page"
+    },
+    {
+      "Command": "waitForPageToLoad",
+      "Target": "6000",
+      "Value": "",
+      "Description": "Wait for the page to load completely"
+    },
+    {
+      "Command": "storeText",
+      "Target": "//*[@id=\"top-scrollable-container\"]/main/div/div/div/div/div[2]/div[1]/div/div/div/span",
+      "Value": "loyalty_level_text",
+      "Description": "Store the loyalty level text"
+    },
+    {
+      "Command": "echo",
+      "Target": "${loyalty_level_text}",
+      "Value": "",
+      "Description": "Print the loyalty level text"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return parseFloat(${loyalty_level_text});",
+      "Value": "nexo_percentage",
+      "Description": "Extract the percentage value"
+    },
+    {
+      "Command": "echo",
+      "Target": "${nexo_percentage}",
+      "Value": "",
+      "Description": "Print the percentage value"
+    },
+    {
+      "Command": "if_v2",
+      "Target": "${nexo_percentage} !== null && ${nexo_percentage} > 10",
+      "Value": "",
+      "Description": "Check if the percentage value is greater than 10%"
+    },
+    {
+      "Command": "echo",
+      "Target": "The Nexo token percentage is above 10%.",
+      "Value": "",
+      "Description": "Print a message if the condition is true"
+    },
+    {
+      "Command": "store",
+      "Target": "platinum",
+      "Value": "loyalty",
+      "Description": ""
+    },
+    {
+      "Command": "else",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "",
+      "Value": "loyalty",
+      "Description": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "The Nexo token percentage is not above 10%.",
+      "Value": "",
+      "Description": "Print a message if the condition is false"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    }
+  ]
+}

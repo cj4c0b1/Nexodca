@@ -1,0 +1,39 @@
+{
+  "Name": "nexo-select_percet_to_sell",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/section/div/div/div[3]/div[2]/div/button/div/span",
+      "Value": "",
+      "Targets": [
+        "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/section/div/div/div[3]/div[2]/div/button/div/span",
+        "xpath=//div[2]/div/button/div/span",
+        "css=#top-scrollable-container > main > div > div > div.sc-c1ea309-0.hELMsS > div > div > section > div > div:nth-child(1) > div.sc-20d85afa-0.gdgjSA > div.sc-20d85afa-0.jxrUCE > div:nth-child(1) > button > div > span"
+      ],
+      "Description": "25"
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/section/div/div/div[4]/div[2]/div[2]/button/div/span",
+      "Value": "",
+      "Targets": [
+        "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/section/div/div/div[4]/div[2]/div[2]/button/div/span",
+        "xpath=//div[2]/button/div/span",
+        "css=#top-scrollable-container > main > div > div > div.sc-c1ea309-0.hELMsS > div > div > section > div > div:nth-child(1) > div.sc-20d85afa-0.gdgjSA > div.sc-20d85afa-0.jxrUCE > div:nth-child(2) > button > div > span"
+      ],
+      "Description": "50"
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/section/div/div/div[4]/div[2]/div[3]/button/div/span",
+      "Value": "",
+      "Targets": [
+        "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/section/div/div/div[4]/div[2]/div[3]/button/div/span",
+        "xpath=//div[2]/div[3]/button/div/span",
+        "css=#top-scrollable-container > main > div > div > div.sc-c1ea309-0.hELMsS > div > div > section > div > div:nth-child(1) > div.sc-20d85afa-0.gdgjSA > div.sc-20d85afa-0.jxrUCE > div:nth-child(3) > button > div > span"
+      ],
+      "Description": "100"
+    }
+  ]
+}

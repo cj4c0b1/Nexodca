@@ -1,0 +1,178 @@
+{
+  "Name": "generic-BUY-1",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "open",
+      "Target": "https://platform.nexo.com/exchange/swap",
+      "Value": "",
+      "Description": "Open Nexo Swap"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return ['BTC', 'ETH','AAVE', 'ADA', 'APE', 'ATOM', 'AVAX', 'SOL', 'BCH', 'LTC', 'DOT', 'XRP', 'TIA', 'LINK', 'NEAR', 'CAKE', 'GALA', 'AXS', 'SNX', 'GRT', 'CRV', 'SAND'];",
+      "Value": "crypto_assets",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "executeScript_Sandbox // return [ 'ETH','AAVE', 'ADA', 'APE', 'ATOM', 'AVAX', 'SOL', 'BCH', 'LTC', 'DOT', 'XRP', 'TIA', 'LINK', 'NEAR', 'CAKE', 'GALA', 'AXS', 'SNX', 'GRT', 'CRV', 'SAND'];",
+      "Value": "crypto_assets",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "executeScript_Sandbox // return [ 'AAVE','AAVE', 'ADA', 'APE', 'ATOM', 'AVAX', 'SOL', 'BCH', 'LTC', 'DOT', 'XRP', 'TIA', 'LINK', 'NEAR', 'CAKE', 'GALA', 'AXS', 'SNX', 'GRT', 'CRV', 'SAND'];",
+      "Value": "crypto_assets",
+      "Description": ""
+    },
+    {
+      "Command": "forEach",
+      "Target": "crypto_assets",
+      "Value": "currentAsset",
+      "Description": "Loop through each crypto asset"
+    },
+    {
+      "Command": "store",
+      "Target": "${currentAsset}",
+      "Value": "global_token",
+      "Description": ""
+    },
+    {
+      "Command": "run",
+      "Target": "SELL-generic_with_price_check",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "if",
+      "Target": "${arrowdup}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "open",
+      "Target": "https://platform.nexo.com/exchange/swap/deposit/${currentAsset}_${global_token_from}",
+      "Value": "",
+      "Description": "Navigate to the swap page for each asset"
+    },
+    {
+      "Command": "storeText",
+      "Target": "css=span[data-testid='web-ui.amount.currency-value']",
+      "Value": "availableValue",
+      "Description": "Stores the available currency value from the span element"
+    },
+    {
+      "Command": "pause",
+      "Target": "1000",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return parseFloat(${availableValue});",
+      "Value": "numericValue",
+      "Description": "Converts the available value to a numeric type"
+    },
+    {
+      "Command": "if",
+      "Target": "${numericValue} > 0",
+      "Value": "",
+      "Description": "Checks if the available value is greater than zero"
+    },
+    {
+      "Command": "if",
+      "Target": "${portfolio_percentage} == 25",
+      "Value": "",
+      "Description": "Check if portfolio percentage is 25"
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/section/div/div/div[3]/div[2]/div/button/div/span",
+      "Value": "",
+      "Description": "Sell 25% of the current asset"
+    },
+    {
+      "Command": "elseif",
+      "Target": "${portfolio_percentage} == 50",
+      "Value": "",
+      "Description": "Check if portfolio percentage is 50"
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/section/div/div/div[3]/div[2]/div[2]/button/div/span",
+      "Value": "",
+      "Description": "Sell 50% of the current asset"
+    },
+    {
+      "Command": "elseif",
+      "Target": "${portfolio_percentage} == 100",
+      "Value": "",
+      "Description": "Check if portfolio percentage is 100"
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/section/div/div/div[3]/div[2]/div[3]/button/div/span",
+      "Value": "",
+      "Description": "Sell 100% of the current asset"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "End conditional check for portfolio percentage"
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/div[3]/button",
+      "Value": "",
+      "Targets": [
+        "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/div[3]/button",
+        "xpath=//div[2]/div/div/div[3]/button",
+        "css=#top-scrollable-container > main > div > div > div.sc-c1ea309-0.hELMsS > div > div > div.sc-20d85afa-0.jJpIYA > button.sc-5e62eced-0.htmizp.variant-primary.size-large"
+      ],
+      "Description": "Confirm sell action"
+    },
+    {
+      "Command": "pause",
+      "Target": "300",
+      "Value": "",
+      "Description": "Pause briefly to allow transaction to complete"
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div/div/div/div/div[6]/button[2]",
+      "Value": "",
+      "Targets": [
+        "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div/div/div/div/div[6]/button[2]",
+        "xpath=//button[2]",
+        "css=#top-scrollable-container > main > div > div > div > div > div > div > div.sc-20d85afa-0.jguEiB > button.sc-eee95bba-0.eccKlP.variant-primary.size-large"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "pause",
+      "Target": "3000",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "End loop through crypto assets"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    }
+  ]
+}

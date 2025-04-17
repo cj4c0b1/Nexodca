@@ -1,0 +1,72 @@
+{
+  "Name": "3-SELL-multiple generic_by_profile",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "prompt",
+      "Target": "Please type a coin (USDT, USDC, EURx) [default: USDT]:",
+      "Value": "user_token",
+      "Description": "Prompt user to type a coin"
+    },
+    {
+      "Command": "if_v2",
+      "Target": "${user_token} == null || ${user_token} == ''",
+      "Value": "",
+      "Description": "Check if user_token is empty"
+    },
+    {
+      "Command": "store",
+      "Target": "USDT",
+      "Value": "user_token",
+      "Description": "Set default coin to USDT if none was selected"
+    },
+    {
+      "Command": "echo",
+      "Target": "No coin selected. Using default value: EURx.",
+      "Value": "",
+      "Description": "Inform the user that USDT is the default"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "End of the empty check"
+    },
+    {
+      "Command": "store",
+      "Target": "${user_token}",
+      "Value": "global_token_from",
+      "Description": "Print a message if the condition is true"
+    },
+    {
+      "Command": "run",
+      "Target": "SELL-multiple",
+      "Value": "",
+      "Description": "Print a message if the condition is true"
+    },
+    {
+      "Command": "comment",
+      "Target": "run // multiple_${profile}",
+      "Value": "",
+      "Description": "Print a message if the condition is true"
+    },
+    {
+      "Command": "comment",
+      "Target": "run // multiple_conservative",
+      "Value": "",
+      "Description": "Print a message if the condition is true"
+    },
+    {
+      "Command": "comment",
+      "Target": "run // multiple_moderated",
+      "Value": "",
+      "Description": "Print a message if the condition is true"
+    },
+    {
+      "Command": "comment",
+      "Target": "run // multiple_aggressive",
+      "Value": "",
+      "Description": "Print a message if the condition is true"
+    }
+  ]
+}

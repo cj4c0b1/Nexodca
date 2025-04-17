@@ -1,0 +1,60 @@
+{
+  "Name": "TokenChecker",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "store",
+      "Target": "BTC,ETH,DOT",
+      "Value": "tokenList",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "ETH",
+      "Value": "tokenToCheck",
+      "Description": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "tokenList: ${tokenList}, tokenToCheck: ${tokenToCheck}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return ${tokenList}.toLowerCase().split(',').indexOf(${tokenToCheck}.toLowerCase()) !== -1",
+      "Value": "isTokenInList",
+      "Description": ""
+    },
+    {
+      "Command": "if",
+      "Target": "${isTokenInList} == true",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "Token ${tokenToCheck} is in the list.",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "else",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "Token ${tokenToCheck} is not in the list.",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "endif",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    }
+  ]
+}

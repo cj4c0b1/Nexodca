@@ -1,0 +1,18 @@
+{
+  "Name": "check_if_purchased",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "echo",
+      "Target": "purchasedCoins: ${purchasedCoins}, global_token: ${global_token}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return ${purchasedCoins}.toLowerCase().split(',').indexOf(${global_token}.toLowerCase()) !== -1",
+      "Value": "isAlreadyPurchased",
+      "Description": ""
+    }
+  ]
+}

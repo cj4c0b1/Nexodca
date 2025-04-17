@@ -1,0 +1,142 @@
+{
+  "Name": "generic_with_price_check-1",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "comment",
+      "Target": "open // URL_OF_YOUR_PAGE",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript",
+      "Target": "var element = document.querySelector('[data-testid=\"markets.asset-info.container\"]'); if (element) { element.remove(); }",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript",
+      "Target": "var element = document.querySelector('[data-testid=\"web-ui.component.stack\"].gkzeXX'); if (element) { element.remove(); }",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "executeScript // return document.querySelector('.sc-5601f559-0.bqQvhW') != null;",
+      "Value": "elementoPresente",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "executeScript // var element = document.querySelector('[data-testid=\"web-ui.component.stack\"].sc-20d85afa-0.zuAHI'); if (element) { element.remove(); }",
+      "Value": "",
+      "Description": "Remove the target div with specific data-testid and class"
+    },
+    {
+      "Command": "comment",
+      "Target": "executeScript // return document.evaluate(\"/html/body/div[1]/div[2]/div/div[2]/main/div/div/div/div/div[1]/div/div[1]/div/div[1]/span/div/svg/path\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue != null;",
+      "Value": "elementoPresente",
+      "Description": ""
+    },
+    {
+      "Command": "storeEval",
+      "Target": "!!document.querySelector('.sc-5601f559-0.dGASmP')",
+      "Value": "arrowdown",
+      "Description": ""
+    },
+    {
+      "Command": "storeEval",
+      "Target": "!!document.querySelector('.sc-5601f559-0.bqQvhW')",
+      "Value": "arrowup",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "verifyElementPresent // xpath=/html/body/div[1]/div[2]/div/div[2]/main/div/div/div/div/div[1]/div/div[1]/div/div[1]/span/div/svg/path",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "executeScript // var element = document.evaluate('//path[@fill=\"currentColor\" and @d=\"m10.874 16.545-6.403-5.977c-.45-.42-.6-1.074-.35-1.634S4.97 8 5.62 8H18.43c.65 0 1.2.374 1.45.934s.1 1.214-.35 1.634l-6.403 5.977c-.6.607-1.651.607-2.252 0\"]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; return element ? 'true' : 'false';",
+      "Value": "elementExists",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "executeScript // var element = document.evaluate('//path[@fill=\"currentColor\" and @d=\"m10.874 16.545-6.403-5.977c-.45-.42-.6-1.074-.35-1.634S4.97 8 5.62 8H18.43c.65 0 1.2.374 1.45.934s.1 1.214-.35 1.634l-6.403 5.977c-.6.607-1.651.607-2.252 0\"]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; return element ? 'true' : 'false';",
+      "Value": "elementExists",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "storeAttribute // css=#AreaChart > div.sc-823d4e8a-0.fOHEDr > div > div.sc-20d85afa-0.kiJyUX > span > div > svg > path",
+      "Value": "pathDValue",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "storeAttribute // css=#AreaChart > div.sc-823d4e8a-0.fOHEDr > div > div.sc-20d85afa-0.kiJyUX > span > div > svg > path",
+      "Value": "pathDValue",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "verifyElementPresent // xpath=//*[@data-testid='web-ui.component.ui-icon']//path[@d='m10.874 16.545-6.403-5.977c-.45-.42-.6-1.074-.35-1.634S4.97 8 5.62 8H18.43c.65 0 1.2.374 1.45.934s.1 1.214-.35 1.634l-6.403 5.977c-.6.607-1.651.607-2.252 0']",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "verifyElementPresent // xpath=/html/body/div[1]/div[2]/div/div[2]/main/div/div/div/div/div[1]/div/div[1]/div/div[1]/span/div/svg/path",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "executeScript_Sandbox // const parentElement = document.querySelector('[data-testid=\"web-ui.component.price-movement\"]'); const childElement = parentElement.querySelector('.sc-5601f559-0.bqQvhW'); return childElement !== null ? 'Class found' : 'Class not found';",
+      "Value": "classCheckResult",
+      "Description": ""
+    },
+    {
+      "Command": "verifyElementPresent",
+      "Target": "xpath=//div[@data-testid='web-ui.component.stack']",
+      "Value": "",
+      "Targets": [
+        "xpath=//*[@id=\"AreaChart\"]/div/div/div/span/div/svg",
+        "css=#AreaChart > div.sc-823d4e8a-0.fOHEDr > div > div.sc-20d85afa-0.kiJyUX > span > div > svg"
+      ],
+      "Description": ""
+    },
+    {
+      "Command": "if",
+      "Target": "${!STATUSOK} == true",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "SVG element is present.",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "else",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "SVG element is NOT present.",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    }
+  ]
+}

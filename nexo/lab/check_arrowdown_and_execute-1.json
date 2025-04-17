@@ -1,0 +1,114 @@
+{
+  "Name": "check_arrowdown_and_execute-1",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "open",
+      "Target": "https://platform.nexo.com/wallet/${global_token}/market/buy/USD",
+      "Value": "",
+      "Description": "Open the market page for the specific token"
+    },
+    {
+      "Command": "waitForPageToLoad",
+      "Target": "6000",
+      "Value": "",
+      "Description": "Wait for the page to fully load"
+    },
+    {
+      "Command": "executeScript",
+      "Target": "var element = document.querySelector('[data-testid=\"markets.asset-info.container\"]'); if (element) { element.remove(); }",
+      "Value": "",
+      "Description": "Remove an element that may interfere"
+    },
+    {
+      "Command": "executeScript",
+      "Target": "var element = document.querySelector('[data-testid=\"web-ui.component.stack\"].gkzeXX'); if (element) { element.remove(); }",
+      "Value": "",
+      "Description": "Remove another non-relevant element"
+    },
+    {
+      "Command": "executeScript",
+      "Target": "var element = document.querySelector('[data-testid=\"web-ui.component.stack\"].sc-20d85afa-0.zuAHI'); if (element) { element.remove(); }",
+      "Value": "",
+      "Description": "Remove an additional potentially problematic element"
+    },
+    {
+      "Command": "store",
+      "Target": "false",
+      "Value": "arrowdown",
+      "Description": "Initialize the variable to track arrowdown state"
+    },
+    {
+      "Command": "store",
+      "Target": "",
+      "Value": "arrowdown_element",
+      "Description": "Initialize the variable to store the arrowdown element"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "var arrowdownFound = false; var elementText = ''; var elements = document.querySelectorAll('.sc-91bae1ec-0.gPmVgW'); elements.forEach(function(element) { if (element.textContent.includes('arrow_down')) { arrowdownFound = true; elementText = element.outerHTML; } }); var svgElements = document.querySelectorAll('svg[data-testid=\"web-ui.component.ui-icon\"]'); svgElements.forEach(function(svg) { var path = svg.querySelector('path[d*=\"m10.874 8.455\"]'); if (path) { arrowdownFound = true; elementText = svg.outerHTML; } }); return arrowdownFound ? elementText : '';",
+      "Value": "arrowdown_element",
+      "Description": "Check if any 'arrow_down' indicator is present, including the SVG icon, and store its HTML"
+    },
+    {
+      "Command": "if_v2",
+      "Target": "${arrowdown_element} != ''",
+      "Value": "",
+      "Description": "If any arrowdown element is found, set arrowdown to true"
+    },
+    {
+      "Command": "store",
+      "Target": "true",
+      "Value": "arrowdown",
+      "Description": "Set arrowdown to true"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "End of verification logic"
+    },
+    {
+      "Command": "if_v2",
+      "Target": "${arrowdown}",
+      "Value": "",
+      "Description": "If arrowdown is true, proceed with the purchase process"
+    },
+    {
+      "Command": "echo",
+      "Target": "Arrow Down detected. Proceeding with purchase.",
+      "Value": "",
+      "Description": "Confirmation message"
+    },
+    {
+      "Command": "run",
+      "Target": "generic",
+      "Value": "",
+      "Description": "Run the purchase script"
+    },
+    {
+      "Command": "run",
+      "Target": "mark_coin_as_purchased",
+      "Value": "",
+      "Description": "Mark the token as purchased"
+    },
+    {
+      "Command": "else",
+      "Target": "",
+      "Value": "",
+      "Description": "If arrowdown was not found, stop execution"
+    },
+    {
+      "Command": "echo",
+      "Target": "Arrow Down not detected. Aborting purchase.",
+      "Value": "",
+      "Description": "Informative message"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "End of the process"
+    }
+  ]
+}

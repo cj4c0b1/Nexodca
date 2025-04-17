@@ -1,0 +1,48 @@
+{
+  "Name": "check_if_purchased_sandbox",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "store",
+      "Target": "[\"btc\",\"eth\",\"bch\"]",
+      "Value": "purchasedCoins ",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "Step 1: Parse the purchasedCoins variable into a list",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return JSON.parse('${purchasedCoins}' || '[]').map(item => item.trim());",
+      "Value": "coinList",
+      "Description": "Safely parse the purchasedCoins into a JavaScript array"
+    },
+    {
+      "Command": "comment",
+      "Target": "Step 2: Check if the global token exists in the list",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return ${coinList}.includes('${global_token}');",
+      "Value": "isAlreadyPurchased",
+      "Description": "Check if the global token is already in the list"
+    },
+    {
+      "Command": "comment",
+      "Target": "Step 3: Log the result for debugging (optional)",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "Coin '${global_token}' is already purchased: ${isAlreadyPurchased}",
+      "Value": "",
+      "Description": "Debug output"
+    }
+  ]
+}

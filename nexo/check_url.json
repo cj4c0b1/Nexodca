@@ -1,0 +1,48 @@
+{
+  "Name": "check_url",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return (${GLOBAL_TOKEN_FROM}.toLowerCase() + '_' + ${GLOBAL_TOKEN}.toLowerCase());",
+      "Value": "combinedTokensLowerCase",
+      "Description": "Combina GLOBAL_TOKEN_FROM e GLOBAL_TOKEN em lowercase"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return ${!URL}.toLowerCase().split(',').indexOf(${combinedTokensLowerCase}.toLowerCase()) !== -1",
+      "Value": "endsWithCombinedTokens",
+      "Description": "Verifica se a URL (em lowercase) termina com os tokens combinados (em lowercase)"
+    },
+    {
+      "Command": "if_v2",
+      "Target": "${endsWithCombinedTokens} == true",
+      "Value": "",
+      "Description": "Se a URL termina com os tokens combinados"
+    },
+    {
+      "Command": "echo",
+      "Target": "A URL termina com ${GLOBAL_TOKEN_FROM}_${GLOBAL_TOKEN}!",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "else",
+      "Target": "",
+      "Value": "",
+      "Description": "Se a URL não termina com os tokens combinados"
+    },
+    {
+      "Command": "echo",
+      "Target": "A URL não termina com ${GLOBAL_TOKEN_FROM}_${GLOBAL_TOKEN}.",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "Fim da verificação"
+    }
+  ]
+}

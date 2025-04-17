@@ -1,0 +1,114 @@
+{
+  "Name": "check_arrowdown_and_execute",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "store",
+      "Target": "eth",
+      "Value": "GLOBAL_TOKEN",
+      "Description": "Initialize the variable to track arrowdown state"
+    },
+    {
+      "Command": "open",
+      "Target": "https://platform.nexo.com/wallet/${global_token}/market/buy/USD",
+      "Value": "",
+      "Description": "Open the market page for the specific token"
+    },
+    {
+      "Command": "waitForPageToLoad",
+      "Target": "6000",
+      "Value": "",
+      "Description": "Wait for the page to fully load"
+    },
+    {
+      "Command": "executeScript",
+      "Target": "var element = document.querySelector('[data-testid=\"markets.asset-info.container\"]'); if (element) { element.remove(); }",
+      "Value": "",
+      "Description": "Remove an element that may interfere"
+    },
+    {
+      "Command": "executeScript",
+      "Target": "var element = document.querySelector('[data-testid=\"web-ui.component.stack\"].gkzeXX'); if (element) { element.remove(); }",
+      "Value": "",
+      "Description": "Remove another non-relevant element"
+    },
+    {
+      "Command": "executeScript",
+      "Target": "var element = document.querySelector('[data-testid=\"web-ui.component.stack\"].sc-20d85afa-0.zuAHI'); if (element) { element.remove(); }",
+      "Value": "",
+      "Description": "Remove an additional potentially problematic element"
+    },
+    {
+      "Command": "comment",
+      "Target": "store // false",
+      "Value": "arrowdown",
+      "Description": "Initialize the variable to track arrowdown state"
+    },
+    {
+      "Command": "storeEval",
+      "Target": "!!document.querySelector('.sc-91bae1ec-0.gOJGlv')",
+      "Value": "arrowdown",
+      "Description": ""
+    },
+    {
+      "Command": "if_v2",
+      "Target": "!${arrowdown}",
+      "Value": "",
+      "Description": "If arrowdown is true, proceed with the purchase process"
+    },
+    {
+      "Command": "storeEval",
+      "Target": "!!document.querySelector('.sc-91bae1ec-0.gPmVgW')",
+      "Value": "arrowdown",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "if_v2",
+      "Target": "${arrowdown}",
+      "Value": "",
+      "Description": "If arrowdown is true, proceed with the purchase process"
+    },
+    {
+      "Command": "echo",
+      "Target": "Arrow Down detected. Proceeding with purchase.",
+      "Value": "",
+      "Description": "Confirmation message"
+    },
+    {
+      "Command": "run",
+      "Target": "generic",
+      "Value": "",
+      "Description": "Run the purchase script"
+    },
+    {
+      "Command": "run",
+      "Target": "mark_coin_as_purchased",
+      "Value": "",
+      "Description": "Mark the token as purchased"
+    },
+    {
+      "Command": "else",
+      "Target": "",
+      "Value": "",
+      "Description": "If arrowdown was not found, stop execution"
+    },
+    {
+      "Command": "echo",
+      "Target": "Arrow Down not detected. Aborting purchase.",
+      "Value": "",
+      "Description": "Informative message"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "End of the process"
+    }
+  ]
+}

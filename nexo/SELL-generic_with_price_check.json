@@ -1,0 +1,114 @@
+{
+  "Name": "SELL-generic_with_price_check",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "store",
+      "Target": "false",
+      "Value": "arrowdown",
+      "Description": ""
+    },
+    {
+      "Command": "open",
+      "Target": "https://platform.nexo.com/wallet/${global_token}/market/buy/USD",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "waitForPageToLoad",
+      "Target": "6000",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript",
+      "Target": "var element = document.querySelector('[data-testid=\"markets.asset-info.container\"]'); if (element) { element.remove(); }",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript",
+      "Target": "var element = document.querySelector('[data-testid=\"web-ui.component.stack\"].gkzeXX'); if (element) { element.remove(); }",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript",
+      "Target": "var element = document.querySelector('[data-testid=\"web-ui.component.stack\"].sc-20d85afa-0.zuAHI'); if (element) { element.remove(); }",
+      "Value": "",
+      "Description": "Remove the target div with specific data-testid and class"
+    },
+    {
+      "Command": "storeEval",
+      "Target": "!!document.querySelector('.sc-5601f559-0.dGASmP')",
+      "Value": "arrowdown",
+      "Description": ""
+    },
+    {
+      "Command": "storeEval",
+      "Target": "!!document.querySelector('.sc-5601f559-0.bqQvhW')",
+      "Value": "arrowdup",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "storeText // xpath=//span[@data-testid='web-ui.amount.currency-value' and contains(@class, 'cqZKyX')]",
+      "Value": "asset_price",
+      "Description": "Store asset price"
+    },
+    {
+      "Command": "comment",
+      "Target": "storeText // xpath=//span[@data-testid='web-ui.amount.currency-value' and contains(@class, 'gTYhNR')]",
+      "Value": "price_variation",
+      "Description": "Store percentage variation"
+    },
+    {
+      "Command": "if",
+      "Target": "${force} == \"true\"",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "true",
+      "Value": "arrowdup",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "false",
+      "Value": "force",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "if_v2",
+      "Target": "${arrowdup}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "price is up",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "run // generic-SELL-1",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    }
+  ]
+}

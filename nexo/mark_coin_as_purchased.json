@@ -1,0 +1,18 @@
+{
+  "Name": "mark_coin_as_purchased",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "store",
+      "Target": "${purchasedCoins},${global_token}",
+      "Value": "updatedPurchasedCoins",
+      "Description": "Add the current token to the list"
+    },
+    {
+      "Command": "store",
+      "Target": "${updatedPurchasedCoins}",
+      "Value": "purchasedCoins",
+      "Description": "Update the purchased coins list"
+    }
+  ]
+}

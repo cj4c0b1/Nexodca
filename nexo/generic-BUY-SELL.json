@@ -1,0 +1,96 @@
+{
+  "Name": "generic-BUY-SELL",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "comment",
+      "Target": "Initialize trading based on trade parameter (BUY/SELL)",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "if",
+      "Target": "${trade} == \"BUY\"",
+      "Value": "",
+      "Description": "Check if trade type is BUY"
+    },
+    {
+      "Command": "type",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/section/div/div/div[2]/div/div/input",
+      "Value": "\"${GLOBAL_TOKEN_FROM} ${adjusted_amount}\"",
+      "Description": "Enter buy amount and token"
+    },
+    {
+      "Command": "pause",
+      "Target": "900",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/div[3]/button/div/span",
+      "Value": "",
+      "Description": "Click buy confirmation button"
+    },
+    {
+      "Command": "pause",
+      "Target": "900",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div/div/div/div/div[6]/button[2]",
+      "Value": "",
+      "Description": "Final buy confirmation"
+    },
+    {
+      "Command": "else",
+      "Target": "",
+      "Value": "",
+      "Description": "If trade type is not BUY, proceed with SELL"
+    },
+    {
+      "Command": "type",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/section/div/div/div[2]/div/div/input",
+      "Value": "\"${GLOBAL_TOKEN_FROM} ${adjusted_amount}\"",
+      "Description": "Enter sell amount and token"
+    },
+    {
+      "Command": "pause",
+      "Target": "900",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/div[3]/button/div/span",
+      "Value": "",
+      "Description": "Click sell confirmation button"
+    },
+    {
+      "Command": "pause",
+      "Target": "900",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div/div/div/div/div[6]/button[2]",
+      "Value": "",
+      "Description": "Final sell confirmation"
+    },
+    {
+      "Command": "endif",
+      "Target": "",
+      "Value": "",
+      "Description": "End of BUY/SELL conditional block"
+    },
+    {
+      "Command": "comment",
+      "Target": "end // ",
+      "Value": "",
+      "Description": "End of script"
+    }
+  ]
+}

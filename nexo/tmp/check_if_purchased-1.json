@@ -1,0 +1,18 @@
+{
+  "Name": "check_if_purchased-1",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "storeEval",
+      "Target": "JSON.parse('${purchasedCoins}' || '[]')",
+      "Value": "coinList",
+      "Description": "Parse the coin list from the variable or initialize an empty list"
+    },
+    {
+      "Command": "storeEval",
+      "Target": "(${coinList}.split(',').includes('${global_token}'))",
+      "Value": "isAlreadyPurchased",
+      "Description": "Check if the token is already in the list"
+    }
+  ]
+}

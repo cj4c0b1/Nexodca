@@ -1,0 +1,276 @@
+{
+  "Name": "COMBO-check_Loyalty_level-and run multiple generic-1",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "store",
+      "Target": "33.00000000",
+      "Value": "default_ammount",
+      "Description": "Set the global token to convert from"
+    },
+    {
+      "Command": "label",
+      "Target": "Start_ammount",
+      "Value": "",
+      "Description": "Start of the script"
+    },
+    {
+      "Command": "prompt",
+      "Target": "Please enter the amount to convert (default: 33.00000000):",
+      "Value": "global_ammount",
+      "Description": "Prompt user to enter the global amount"
+    },
+    {
+      "Command": "if_v2",
+      "Target": "${global_ammount} == null || ${global_ammount} == ''",
+      "Value": "",
+      "Description": "Check if global_ammount is empty"
+    },
+    {
+      "Command": "store",
+      "Target": "${default_ammount}",
+      "Value": "global_ammount",
+      "Description": "Use default value if no amount is entered"
+    },
+    {
+      "Command": "echo",
+      "Target": "No amount entered. Using default value: ${global_ammount}.",
+      "Value": "",
+      "Description": "Inform the user that default value is used"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "End of empty check"
+    },
+    {
+      "Command": "label",
+      "Target": "Start",
+      "Value": "",
+      "Description": "Start label"
+    },
+    {
+      "Command": "store",
+      "Target": "1",
+      "Value": "portfolio_percentage",
+      "Description": "Set portfolio_percentage to 1 if not defined"
+    },
+    {
+      "Command": "comment",
+      "Target": "prompt // Please select a profile: 1 - Conservative, 2 - Moderated, 3 - Aggressive [default: 1]",
+      "Value": "profile_input",
+      "Description": "Prompt user to select a profile"
+    },
+    {
+      "Command": "comment",
+      "Target": "if_v2 // ${profile_input} == null || ${profile_input} == ''",
+      "Value": "",
+      "Description": "If input is empty, default to 1"
+    },
+    {
+      "Command": "store",
+      "Target": "1",
+      "Value": "profile_input",
+      "Description": "Set profile to default Conservative"
+    },
+    {
+      "Command": "comment",
+      "Target": "end // ",
+      "Value": "",
+      "Description": "End of default check"
+    },
+    {
+      "Command": "if_v2",
+      "Target": "${profile_input} == '1'",
+      "Value": "",
+      "Description": "If profile is Conservative"
+    },
+    {
+      "Command": "store",
+      "Target": "Conservative",
+      "Value": "profile",
+      "Description": "Store Conservative profile"
+    },
+    {
+      "Command": "elseif",
+      "Target": "${profile_input} == '2'",
+      "Value": "",
+      "Description": "If profile is Moderated"
+    },
+    {
+      "Command": "store",
+      "Target": "Moderated",
+      "Value": "profile",
+      "Description": "Store Moderated profile"
+    },
+    {
+      "Command": "elseif",
+      "Target": "${profile_input} == '3'",
+      "Value": "",
+      "Description": "If profile is Aggressive"
+    },
+    {
+      "Command": "store",
+      "Target": "Aggressive",
+      "Value": "profile",
+      "Description": "Store Aggressive profile"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "End of the profile selection"
+    },
+    {
+      "Command": "echo",
+      "Target": "Selected profile is: ${profile}",
+      "Value": "",
+      "Description": "Output selected profile"
+    },
+    {
+      "Command": "prompt",
+      "Target": "Please type a coin (USDT, USDC, EURx) [default: EURx]:",
+      "Value": "user_token",
+      "Description": "Prompt user to type a coin"
+    },
+    {
+      "Command": "if_v2",
+      "Target": "${user_token} == null || ${user_token} == ''",
+      "Value": "",
+      "Description": "Check if user_token is empty"
+    },
+    {
+      "Command": "store",
+      "Target": "EURx",
+      "Value": "user_token",
+      "Description": "Set default coin to EURx if none was selected"
+    },
+    {
+      "Command": "echo",
+      "Target": "No coin selected. Using default value: EURx.",
+      "Value": "",
+      "Description": "Inform the user that EURx is the default"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "End of the empty check"
+    },
+    {
+      "Command": "comment",
+      "Target": "executeScript_Sandbox // var available_coins = ['USDT', 'USDC', 'EURx']; if (available_coins.includes('${user_token}')) { return '${user_token}'; } else { throw 'Invalid coin'; }",
+      "Value": "validated_token",
+      "Description": "Validate selected coin"
+    },
+    {
+      "Command": "comment",
+      "Target": "echo // You selected: ${validated_token}",
+      "Value": "",
+      "Description": "Display selected or validated coin"
+    },
+    {
+      "Command": "comment",
+      "Target": "echo // Coin validation successful!",
+      "Value": "",
+      "Description": "Inform that the coin validation was successful"
+    },
+    {
+      "Command": "open",
+      "Target": "https://platform.nexo.com/profile/loyalty-levels",
+      "Value": "",
+      "Description": "Open the loyalty levels page"
+    },
+    {
+      "Command": "waitForPageToLoad",
+      "Target": "6000",
+      "Value": "",
+      "Description": "Wait for the page to load completely"
+    },
+    {
+      "Command": "storeText",
+      "Target": "//*[@id=\"top-scrollable-container\"]/main/div/div/div/div/div[2]/div[1]/div/div/div/span",
+      "Value": "loyalty_level_text",
+      "Description": "Store the loyalty level text"
+    },
+    {
+      "Command": "echo",
+      "Target": "${loyalty_level_text}",
+      "Value": "",
+      "Description": "Print the loyalty level text"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return parseFloat(${loyalty_level_text});",
+      "Value": "nexo_percentage",
+      "Description": "Extract the percentage value"
+    },
+    {
+      "Command": "echo",
+      "Target": "${nexo_percentage}",
+      "Value": "",
+      "Description": "Print the percentage value"
+    },
+    {
+      "Command": "if_v2",
+      "Target": "${nexo_percentage} !== null && ${nexo_percentage} > 10",
+      "Value": "",
+      "Description": "Check if the percentage value is greater than 10%"
+    },
+    {
+      "Command": "echo",
+      "Target": "The Nexo token percentage is above 10%.",
+      "Value": "",
+      "Description": "Print a message if the condition is true"
+    },
+    {
+      "Command": "store",
+      "Target": "${user_token}",
+      "Value": "global_token_from",
+      "Description": "Print a message if the condition is true"
+    },
+    {
+      "Command": "comment",
+      "Target": "run // multiple_${profile}",
+      "Value": "",
+      "Description": "Print a message if the condition is true"
+    },
+    {
+      "Command": "run",
+      "Target": "multiple_conservative",
+      "Value": "",
+      "Description": "Print a message if the condition is true"
+    },
+    {
+      "Command": "run",
+      "Target": "multiple_moderated",
+      "Value": "",
+      "Description": "Print a message if the condition is true"
+    },
+    {
+      "Command": "run",
+      "Target": "multiple_aggressive",
+      "Value": "",
+      "Description": "Print a message if the condition is true"
+    },
+    {
+      "Command": "else",
+      "Target": "",
+      "Value": "",
+      "Description": "Execute if the condition is false"
+    },
+    {
+      "Command": "echo",
+      "Target": "The Nexo token percentage is not above 10%.",
+      "Value": "",
+      "Description": "Print a message if the condition is false"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    }
+  ]
+}

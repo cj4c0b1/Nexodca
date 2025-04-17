@@ -1,0 +1,186 @@
+{
+  "Name": "generic-BUY-with-min-limit",
+  "CreationDate": "2025-02-11",
+  "Commands": [
+    {
+      "Command": "open",
+      "Target": "https://platform.nexo.com/exchange/swap",
+      "Value": "",
+      "Description": "Open Nexo Swap"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return ['BTC', 'ETH','AAVE', 'ADA', 'APE', 'ATOM', 'AVAX', 'SOL', 'BCH', 'LTC', 'DOT', 'XRP', 'TIA', 'LINK', 'NEAR', 'CAKE', 'GALA', 'AXS', 'SNX', 'GRT', 'CRV', 'SAND'];",
+      "Value": "crypto_assets",
+      "Description": "List of assets to process"
+    },
+    {
+      "Command": "forEach",
+      "Target": "crypto_assets",
+      "Value": "currentAsset",
+      "Description": "Loop through each crypto asset"
+    },
+    {
+      "Command": "store",
+      "Target": "${currentAsset}",
+      "Value": "global_token",
+      "Description": "Store current asset for global use"
+    },
+    {
+      "Command": "run",
+      "Target": "check_if_NOT_purchased",
+      "Value": "",
+      "Description": "Check if asset hasn't been purchased yet"
+    },
+    {
+      "Command": "if",
+      "Target": "${!purchased}",
+      "Value": "",
+      "Description": "Only proceed if not yet purchased"
+    },
+    {
+      "Command": "storeText",
+      "Target": "css=span[data-testid='web-ui.amount.currency-value']",
+      "Value": "desiredAmount",
+      "Description": "Get the desired purchase amount"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return parseFloat(${desiredAmount});",
+      "Value": "numericAmount",
+      "Description": "Convert to number"
+    },
+    {
+      "Command": "if",
+      "Target": "${numericAmount} < 250",
+      "Value": "",
+      "Description": "Check if amount is below minimum"
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return Math.ceil((250 - ${numericAmount}) * 100) / 100;",
+      "Value": "additionalAmount",
+      "Description": "Calculate additional amount needed"
+    },
+    {
+      "Command": "type",
+      "Target": "css=input[data-testid='web-ui.input.number-input']",
+      "Value": "250",
+      "Description": "Enter minimum amount of 250"
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/div[3]/button",
+      "Value": "",
+      "Description": "Confirm purchase"
+    },
+    {
+      "Command": "pause",
+      "Target": "3000",
+      "Value": "",
+      "Description": "Wait for transaction"
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div/div/div/div/div[6]/button[2]",
+      "Value": "",
+      "Description": "Confirm in modal"
+    },
+    {
+      "Command": "pause",
+      "Target": "3000",
+      "Value": "",
+      "Description": "Wait for completion"
+    },
+    {
+      "Command": "if",
+      "Target": "${additionalAmount} > 0",
+      "Value": "",
+      "Description": "If we bought extra, sell it back"
+    },
+    {
+      "Command": "type",
+      "Target": "css=input[data-testid='web-ui.input.number-input']",
+      "Value": "${additionalAmount}",
+      "Description": "Enter the excess amount to sell"
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/div[3]/button",
+      "Value": "",
+      "Description": "Confirm sell"
+    },
+    {
+      "Command": "pause",
+      "Target": "3000",
+      "Value": "",
+      "Description": "Wait for transaction"
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div/div/div/div/div[6]/button[2]",
+      "Value": "",
+      "Description": "Confirm in modal"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "End if additional amount"
+    },
+    {
+      "Command": "else",
+      "Target": "",
+      "Value": "",
+      "Description": "If amount is >= 250"
+    },
+    {
+      "Command": "type",
+      "Target": "css=input[data-testid='web-ui.input.number-input']",
+      "Value": "${desiredAmount}",
+      "Description": "Enter original desired amount"
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div[2]/div/div/div[3]/button",
+      "Value": "",
+      "Description": "Confirm purchase"
+    },
+    {
+      "Command": "pause",
+      "Target": "3000",
+      "Value": "",
+      "Description": "Wait for transaction"
+    },
+    {
+      "Command": "click",
+      "Target": "xpath=//*[@id=\"top-scrollable-container\"]/main/div/div/div/div/div/div/div[6]/button[2]",
+      "Value": "",
+      "Description": "Confirm in modal"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "End amount check"
+    },
+    {
+      "Command": "run",
+      "Target": "mark_coin_as_purchased",
+      "Value": "",
+      "Description": "Mark as purchased"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "End purchase check"
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": "End forEach"
+    }
+  ]
+}

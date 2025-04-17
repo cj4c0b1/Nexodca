@@ -1,0 +1,24 @@
+{
+  "Name": "mark_coin_as_purchased-1",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "store",
+      "Target": "${!globalPurchasedCoins}",
+      "Value": "purchasedCoins",
+      "Description": "Get the current list of purchased coins as a string"
+    },
+    {
+      "Command": "storeEval",
+      "Target": "${purchasedCoins} + ((${purchasedCoins} ? ',' : '') + '${global_token}')",
+      "Value": "!globalPurchasedCoins",
+      "Description": "Append the current coin to the list"
+    },
+    {
+      "Command": "echo",
+      "Target": "Coin ${global_token} marked as purchased. New list: ${!globalPurchasedCoins}",
+      "Value": "",
+      "Description": "Log the updated list of purchased coins"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "Name": "generic_with_price_check-bkp",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "store",
+      "Target": "false",
+      "Value": "arrowdown",
+      "Description": ""
+    },
+    {
+      "Command": "open",
+      "Target": "https://platform.nexo.com/wallet/${global_token}/market/buy/USD",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "waitForPageToLoad",
+      "Target": "6000",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript",
+      "Target": "var element = document.querySelector('[data-testid=\"markets.asset-info.container\"]'); if (element) { element.remove(); }",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript",
+      "Target": "var element = document.querySelector('[data-testid=\"web-ui.component.stack\"].gkzeXX'); if (element) { element.remove(); }",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript",
+      "Target": "var element = document.querySelector('[data-testid=\"web-ui.component.stack\"].sc-20d85afa-0.zuAHI'); if (element) { element.remove(); }",
+      "Value": "",
+      "Description": "Remove the target div with specific data-testid and class"
+    },
+    {
+      "Command": "comment",
+      "Target": "executeScript // document.querySelector('.sc-91bae1ec-0.gPmVgW')",
+      "Value": "arrowdown",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "storeAttribute // css=#AreaChart > div.sc-823d4e8a-0.kcHyWv > div > div.sc-20d85afa-0.hpoYrv > span > div > svg",
+      "Value": "arrowDirection",
+      "Description": ""
+    },
+    {
+      "Command": "storeEval",
+      "Target": "!!document.querySelector('.sc-91bae1ec-0.gPmVgW')",
+      "Value": "arrowdown",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "storeText // xpath=//span[@data-testid='web-ui.amount.currency-value' and contains(@class, 'cqZKyX')]",
+      "Value": "asset_price",
+      "Description": "Store asset price"
+    },
+    {
+      "Command": "comment",
+      "Target": "storeText // xpath=//span[@data-testid='web-ui.amount.currency-value' and contains(@class, 'gTYhNR')]",
+      "Value": "price_variation",
+      "Description": "Store percentage variation"
+    },
+    {
+      "Command": "if",
+      "Target": "${force} == \"true\"",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "true",
+      "Value": "arrowdown",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "store // false",
+      "Value": "force",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "if_v2",
+      "Target": "${arrowdown}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "price is down",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "run",
+      "Target": "generic",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    }
+  ]
+}

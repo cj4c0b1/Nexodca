@@ -1,0 +1,24 @@
+{
+  "Name": "SELL-multiple",
+  "CreationDate": "2024-12-12",
+  "Commands": [
+    {
+      "Command": "store",
+      "Target": "25",
+      "Value": "portfolio_percentage",
+      "Description": "Set portfolio_percentage to 25"
+    },
+    {
+      "Command": "store",
+      "Target": "false",
+      "Value": "force",
+      "Description": "Set portfolio_percentage to 25"
+    },
+    {
+      "Command": "run",
+      "Target": "generic-SELL-1",
+      "Value": "",
+      "Description": "Call the target script 'generic-sell' with the parameter 'eth'"
+    }
+  ]
+}
